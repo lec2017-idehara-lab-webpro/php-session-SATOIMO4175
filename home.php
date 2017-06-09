@@ -1,3 +1,4 @@
+<? php session_start();
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,6 +12,7 @@
     <h1>ユーザのホーム画面</h1>
 
 <?php
+
 $login = [];
 $login['1001'] = array(
   'name'=>'TAMA Taro',
@@ -26,14 +28,16 @@ if(isset($_POST['id'],$_POST['pass']) && strlen($_POST['id'])>0 )
     print('Welcome');
   else {
     print('Wrong Password');
-  }
+	$_SESSITON['id'] = $id;
+	$_SESSITON['name'] = $login[$id]['name'];
+	var_dump($_SESSION);
+	}
 }
 
 $name = ''; // ここ書き換え
 print('<hr />');
 print($name . "さんでログイン中");
 
- ?>
-
+?>
   </body>
 </html>
